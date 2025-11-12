@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DailyOpenews - Authentic Stories</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .view-count {
+      font-size: 14px;
+      color: #555;
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .view-count span {
+      font-weight: bold;
+      color: #222;
+    }
+
+    .view-icon {
+      color: #e6b800;
+    }
+
+    /* Date and Time styling */
+    .datetime {
+      color: #333;
+      font-size: 14px;
+      font-weight: bold;
+      background: #fff3cd;
+      padding: 5px 10px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">DailyOpen <span>News</span></div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">News</a>
+      <a href="#">Culture</a>
+      <a href="#">Politics</a>
+      <a href="#">Education</a>
+      <a href="#">Entertainment</a>
+      <a href="#">Interviews</a>
+      <a href="#">Lifestyle</a>
+      <a href="#">Opinion</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Search news...">
+      </div>
+      <div class="datetime" id="datetime">Loading...</div>
+    </div>
+  </header>
+
+  <!-- Breaking News -->
+  <div class="breaking-news">
+    <span class="label">Breaking News:</span>
+    <marquee behavior="scroll" direction="left">
+      DailyOpenews Launches: Bringing Authentic Stories to Your Fingertips • Lagos Hosts Yoruba Film Festival 2025 •
+      New Yoruba Heritage School Opens in Ibadan • Oga Chairman Debuts Weekly Commentary Show
+    </marquee>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="images/story1.jpg" alt="Featured News">
+    <div class="hero-text">
+      <h1>DailyOpenews Launches: Bringing Authentic Stories to Your Fingertips</h1>
+      <p>DailyOpenews officially launches today, offering fans a one-stop platform for breaking news, cultural stories, entertainment, and lifestyle updates. From festivals and fashion to politics and education, the platform promises authentic content that celebrates Yoruba heritage while keeping audiences informed in real-time.</p>
+      <a href="readstory.html" class="read-more">Read Full Story</a>
+      <div class="view-count"><span class="view-icon">👁️</span> Views: <span class="count" data-id="hero">0</span></div>
+    </div>
+  </section>
+
+  <!-- Latest News -->
+  <section class="latest-news">
+    <h2>Latest Stories</h2>
+    <div class="news-grid">
+      <article>
+        <img src="images/story.jpg" alt="DailyOpenews Launches">
+        <h3>Yoruba Fashion Designers Shine at Lagos Runway</h3>
+        <p>Emerging Yoruba designers showcase rich aso-oke and adire prints in modern collections.</p>
+        <a href="#">Coming Soon</a>
+        <div class="view-count"><span class="view-icon">👁️</span> Views: <span class="count" data-id="story1">0</span></div>
+      </article>
+      <article>
+        <img src="images/story2.jpg" alt="Festival">
+        <h3>Osun Osogbo Festival Draws Global Attention</h3>
+        <p>This year’s festival celebrates unity and environmental preservation within Yoruba culture.</p>
+        <a href="#">Coming Soon</a>
+        <div class="view-count"><span class="view-icon">👁️</span> Views: <span class="count" data-id="story2">0</span></div>
+      </article>
+      <article>
+        <img src="images/story3.jpg" alt="Music">
+        <h3>Traditional Music Finds New Life Through Youth</h3>
+        <p>Young Yoruba musicians are blending bata drums with hip-hop and Afrobeats.</p>
+        <a href="#">Coming Soon</a>
+        <div class="view-count"><span class="view-icon">👁️</span> Views: <span class="count" data-id="story3">0</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Oga Chairman Corner -->
+  <section class="editorial">
+    <h2>🗣️ Oga Chairman’s Corner</h2>
+    <p>“My people, Yoruba culture no dey go anywhere. As we dey embrace modern life, make we still remember our roots.”</p>
+    <a href="#" class="read-more">Watch Latest Commentary</a>
+    <div class="view-count"><span class="view-icon">👁️</span> Views: <span class="count" data-id="chairman">0</span></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 DailyOpenews. All rights reserved.</p>
+    <div class="socials">
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">YouTube</a> |
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // View Counter Script
+    document.addEventListener("DOMContentLoaded", function() {
+      const counters = document.querySelectorAll(".count");
+
+      counters.forEach(counter => {
+        const id = counter.dataset.id;
+        let views = localStorage.getItem("views_" + id);
+        if (!views) {
+          views = Math.floor(Math.random() * 500 + 100);
+          localStorage.setItem("views_" + id, views);
+        }
+        counter.textContent = views;
+
+        const newCount = parseInt(views) + 1;
+        localStorage.setItem("views_" + id, newCount);
+        counter.textContent = newCount;
+      });
+    });
+
+    // Live Date & Time Script
+    function updateDateTime() {
+      const now = new Date();
+      const date = now.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      const time = now.toLocaleTimeString('en-GB');
+      document.getElementById("datetime").textContent = `${date} | ${time}`;
+    }
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+  </script>
+</body>
+</html>

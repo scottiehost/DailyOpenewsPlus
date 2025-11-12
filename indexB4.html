@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenTvplus News - Authentic Yoruba Stories</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .view-count {
+      font-size: 14px;
+      color: #555;
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .view-count span {
+      font-weight: bold;
+      color: #222;
+    }
+
+    .view-icon {
+      color: #e6b800;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">OpenTvplus <span>News</span></div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">News</a>
+      <a href="#">Culture</a>
+      <a href="#">Politics</a>
+      <a href="#">Education</a>
+      <a href="#">Entertainment</a>
+      <a href="#">Interviews</a>
+      <a href="#">Lifestyle</a>
+      <a href="#">Opinion</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="Search news...">
+    </div>
+  </header>
+
+  <!-- Breaking News -->
+  <div class="breaking-news">
+    <span class="label">Breaking:</span>
+    <marquee behavior="scroll" direction="left">
+      Ooni of Ife Launches New Yoruba Cultural Museum • Lagos Hosts Yoruba Film Festival 2025 •
+      New Yoruba Heritage School Opens in Ibadan • Oga Chairman Debuts Weekly Commentary Show
+    </marquee>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="images/featured-news.jpg" alt="Featured News">
+    <div class="hero-text">
+      <h1>Preserving Yoruba Heritage in a Modern World</h1>
+      <p>Leaders and cultural ambassadors meet in Osogbo to discuss how Yoruba traditions can thrive in the digital age.</p>
+      <a href="#" class="read-more">Read Full Story</a>
+      <div class="view-count"><span class="view-icon">👁️</span> Views: <span class="count" data-id="hero">0</span></div>
+    </div>
+  </section>
+
+  <!-- Latest News -->
+  <section class="latest-news">
+    <h2>Latest Stories</h2>
+    <div class="news-grid">
+      <article>
+        <img src="images/story1.jpg" alt="Yoruba Fashion">
+        <h3>Yoruba Fashion Designers Shine at Lagos Runway</h3>
+        <p>Emerging Yoruba designers showcase rich aso-oke and adire prints in modern collections.</p>
+        <a href="#">Read more</a>
+        <div class="view-count"><span class="view-icon">👁️</span> Views: <span class="count" data-id="story1">0</span></div>
+      </article>
+      <article>
+        <img src="images/story2.jpg" alt="Festival">
+        <h3>Osun Osogbo Festival Draws Global Attention</h3>
+        <p>This year’s festival celebrates unity and environmental preservation within Yoruba culture.</p>
+        <a href="#">Read more</a>
+        <div class="view-count"><span class="view-icon">👁️</span> Views: <span class="count" data-id="story2">0</span></div>
+      </article>
+      <article>
+        <img src="images/story3.jpg" alt="Music">
+        <h3>Traditional Music Finds New Life Through Youth</h3>
+        <p>Young Yoruba musicians are blending bata drums with hip-hop and Afrobeats.</p>
+        <a href="#">Read more</a>
+        <div class="view-count"><span class="view-icon">👁️</span> Views: <span class="count" data-id="story3">0</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Oga Chairman Corner -->
+  <section class="editorial">
+    <h2>🗣️ Oga Chairman’s Corner</h2>
+    <p>“My people, Yoruba culture no dey go anywhere. As we dey embrace modern life, make we still remember our roots.”</p>
+    <a href="#" class="read-more">Watch Latest Commentary</a>
+    <div class="view-count"><span class="view-icon">👁️</span> Views: <span class="count" data-id="chairman">0</span></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 OpenTvplus News. All rights reserved.</p>
+    <div class="socials">
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">YouTube</a> |
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+  
+
+  <!-- View Counter Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const counters = document.querySelectorAll(".count");
+
+      counters.forEach(counter => {
+        const id = counter.dataset.id;
+        let views = localStorage.getItem("views_" + id);
+        if (!views) {
+          views = Math.floor(Math.random() * 500 + 100); // random initial count
+          localStorage.setItem("views_" + id, views);
+        }
+        counter.textContent = views;
+
+        // Simulate an increment when page is loaded
+        const newCount = parseInt(views) + 1;
+        localStorage.setItem("views_" + id, newCount);
+        counter.textContent = newCount;
+      });
+    });
+  </script>
+</body>
+</html>
